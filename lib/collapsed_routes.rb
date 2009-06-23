@@ -51,6 +51,3 @@ private
   
   extend self
 end
-
-
-# comment_path(@comment).should == user_post_comment_path(@user, @post, @comment)
