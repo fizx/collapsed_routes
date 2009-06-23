@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :posts
-  map.resources :comments
-  map.resources :users
+  map.resources :users do |user|
+    user.resources :posts do |post|
+      post.resources :comments
+    end
+  end
 end

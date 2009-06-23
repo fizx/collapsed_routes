@@ -1,6 +1,85 @@
 = collapsed_routes
 
-Description goes here.
+collapsed_routes is a gem to make hierarchical resource routing easier.  Here's an example:
+
+  ActionController::Routing::Routes.draw do |map|
+    map.resources :users do |user|
+      user.resources :posts do |post|
+        post.resources :comments
+      end
+    end
+  end
+
+If you execute:
+
+  require "collapsed_routes"
+  CollapsedRoutes.collapsed_routes :users, :posts, :comments
+    
+This will generate the following url_helpers:
+
+  def comment_path(comment = @comment)
+    user_post_comment_path(comment.post.user, comment.post, comment)
+  end
+
+  def edit_comment_path(comment = @comment)
+    edit_user_post_comment_path(comment.post.user, comment.post, comment)
+  end
+
+  def new_comment_path(post = @post)
+    new_user_post_comment_path(post.user, post)
+  end
+
+  def comments_path(post = @post)
+    user_post_comments_path(post.user, post)
+  end
+
+  def comment_url(comment = @comment)
+    user_post_comment_url(comment.post.user, comment.post, comment)
+  end
+
+  def edit_comment_url(comment = @comment)
+    edit_user_post_comment_url(comment.post.user, comment.post, comment)
+  end
+
+  def new_comment_url(post = @post)
+    new_user_post_comment_url(post.user, post)
+  end
+
+  def comments_url(post = @post)
+    user_post_comments_url(post.user, post)
+  end
+
+  def post_path(post = @post)
+    user_post_path(post.user, post)
+  end
+
+  def edit_post_path(post = @post)
+    edit_user_post_path(post.user, post)
+  end
+
+  def new_post_path(user = @user)
+    new_user_post_path(user)
+  end
+
+  def posts_path(user = @user)
+    user_posts_path(user)
+  end
+
+  def post_url(post = @post)
+    user_post_url(post.user, post)
+  end
+
+  def edit_post_url(post = @post)
+    edit_user_post_url(post.user, post)
+  end
+
+  def new_post_url(user = @user)
+    new_user_post_url(user)
+  end
+
+  def posts_url(user = @user)
+    user_posts_url(user)
+  end
 
 == Copyright
 
