@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "collapsed_routes"
-    gem.summary = %Q{TODO}
+    gem.summary = %Q{Simpler routes for nested resources}
     gem.email = "kyle@kylemaxwell.com"
     gem.homepage = "http://github.com/fizx/collapsed_routes"
     gem.authors = ["Kyle Maxwell"]
