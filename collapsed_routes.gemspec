@@ -92,7 +92,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.2}
-  s.summary = %q{TODO}
+  s.summary = %q{Simpler routes for nested resources}
   s.test_files = [
     "spec/app/app/controllers/application_controller.rb",
      "spec/app/app/controllers/comments_controller.rb",
