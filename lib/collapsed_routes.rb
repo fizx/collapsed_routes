@@ -19,6 +19,7 @@ private
   end
 
   def collapse(names)
+    logger = ActionController::Base.logger
     base = names[-1].singularize
     parent = names[-2].singularize
     series = names.map(&:singularize).join("_")
@@ -29,6 +30,11 @@ private
     backtrack_parent = backtrack reversed
 
     %w[path url].each do |path|
+      logger.info "Defining route: #{base}_#{path}(#{base} = @#{base})"
+      logger.info "Defining route: edit_#{base}_#{path}(#{base} = @#{base})"
+      logger.info "Defining route: new_#{base}_#{path}(#{parent} = @#{parent})"
+      logger.info "Defining route: #{base.pluralize}_#{path}(#{parent} = @#{parent})"
+      
       ActionController::UrlWriter.module_eval <<-RUBY
         def #{base}_#{path}(#{base} = @#{base})
           #{series}_#{path}(#{backtrack_base})
