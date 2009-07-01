@@ -35,7 +35,7 @@ private
       logger.info "Defining route: new_#{base}_#{path}(#{parent} = @#{parent})"
       logger.info "Defining route: #{base.pluralize}_#{path}(#{parent} = @#{parent})"
       
-      ActionController::UrlWriter.module_eval <<-RUBY
+      CollapsedRoutes.module_eval <<-RUBY
         def #{base}_#{path}(#{base} = @#{base})
           #{series}_#{path}(#{backtrack_base})
         end
