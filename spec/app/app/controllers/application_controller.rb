@@ -1,7 +1,8 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
+require File.dirname(__FILE__) + "/../../../../lib/collapsed_routes"
 class ApplicationController < ActionController::Base
+  include CollapsedRoutes
+  collapsed_routes :users, :posts, :comments
+  
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 

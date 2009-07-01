@@ -1,8 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
+# ActionController::Base.default_url_options[:host] = "localhost"
 include ActionController::UrlWriter
-include CollapsedRoutes
-
 ActionController::Base.default_url_options[:host] = "localhost"
 
 describe "UrlWriter" do
@@ -10,7 +9,6 @@ describe "UrlWriter" do
     @user = User.create :name => "Buddy Holly"
     @post = @user.posts.create :title => "Hi world", :body => "foo bar"
     @comment = @post.comments.create :title => "Hello back", :body => "who?"
-    collapsed_routes :users, :posts, :comments
   end
   
   it "should have routes already defined" do

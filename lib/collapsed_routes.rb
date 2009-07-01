@@ -55,5 +55,9 @@ private
     end
   end
   
+  def included(klass)
+    klass.extend(self)
+  end
+  
   extend self
 end
